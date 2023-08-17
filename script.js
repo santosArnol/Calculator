@@ -11,7 +11,9 @@ class Calculator {
     }
 
     appendNumber(buttonText){
-        console.log(buttonText);
+        if (buttonText == ',' && currentNumberDisplay.innerText.includes(',')){
+            return
+        }
         this.currentNumberDisplay.innerText += buttonText;
     }
 

@@ -16,7 +16,6 @@ class Calculator {
     }
 
     delete(){
-        console.log(currentNumberDisplay.innerText.slice(0,-1));
         this.currentNumberDisplay.innerText = currentNumberDisplay.innerText.slice(0,-1);
     }
 
@@ -24,6 +23,15 @@ class Calculator {
         previousNumberDisplay.innerText = this.previousNumberDisplay.innerText;
         currentNumberDisplay.innerText = this.currentNumberDisplay.innerText;
     }
+
+    inputOperator(operatorText){
+        this.operator = operatorText;
+        previousNumberDisplay.innerText = this.currentNumberDisplay.innerText + " " +operatorText;
+        currentNumberDisplay.innerText = "";
+    }
+
+
+
 
 
 }
@@ -50,9 +58,21 @@ deleteButton.addEventListener('click', () => {
     calculator.updateDisplay();        
 });
 
+equalsButtton.addEventListener('click', () => {
+    calculator.operate();
+    calculator.updateDisplay();        
+});
+
 numbersList.forEach(button => {
     button.addEventListener('click', () => {
         calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();        
+    })
+});
+
+operationsList.forEach(operation => {
+    operation.addEventListener('click', () => {
+        calculator.inputOperator(operation.innerText);
         calculator.updateDisplay();        
     })
 });

@@ -30,7 +30,32 @@ class Calculator {
         currentNumberDisplay.innerText = "";
     }
 
+    operate(){
+        this.currentNumtoFloat = parseFloat(currentNumberDisplay.innerText);
+        this.prevNumtoFloat = parseFloat(previousNumberDisplay.innerText);
+        
+        switch(this.operator){
+            case "+":
+                console.log(this.currentNumtoFloat + this.prevNumtoFloat)
+                currentNumberDisplay.innerText = (this.currentNumtoFloat + this.prevNumtoFloat);
+                break;
+            case "-":
+                console.log(this.currentNumtoFloat - this.prevNumtoFloat)
+                currentNumberDisplay.innerText = (this.prevNumtoFloat - this.currentNumtoFloat);
+                break;
+            case "*":
+                console.log(this.currentNumtoFloat * this.prevNumtoFloat)
+                currentNumberDisplay.innerText = (this.currentNumtoFloat * this.prevNumtoFloat);
+                break;
+            case "/":
+                console.log(this.currentNumtoFloat / this.prevNumtoFloat)
+                currentNumberDisplay.innerText = (this.prevNumtoFloat / this.currentNumtoFloat);
+                break;                
+                                              
+        }
 
+        previousNumberDisplay.innerText = "";
+     }
 
 
 

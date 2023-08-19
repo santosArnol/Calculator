@@ -11,13 +11,16 @@ class Calculator {
     }
 
     appendNumber(buttonText){
-        //Limit amount of digits
-        if (currentNumberDisplay.innerText.length == 18) {return}
+
+        if (currentNumberDisplay.innerText.length > 12) {return}
         
         //Filter problematic input values
         switch (buttonText){
             case '.':
                if (currentNumberDisplay.innerText.includes('.')) { return }
+               if (currentNumberDisplay.innerText == ''){
+                this.currentNumberDisplay.innerText = '0';                
+               }
                break;
             case '0':
                 if (currentNumberDisplay.innerText == '0') { return }
@@ -49,33 +52,35 @@ class Calculator {
             previousNumberDisplay.innerText = previousNumberDisplay.innerText.slice(0,-2) + " " +operatorText;;
             return};
 
+        if (previousNumberDisplay.innerText != ""){
+            this.operate()
+            return;
+        }
+
         previousNumberDisplay.innerText = this.currentNumberDisplay.innerText + " " +operatorText;
         currentNumberDisplay.innerText = "";
     }
 
     operate(){
-        if (currentNumberDisplay.innerText == "" || previousNumberDisplay.innerText == ""){
-            return console.log('missing one')
-        }
 
         this.currentNumtoFloat = parseFloat(currentNumberDisplay.innerText);
         this.prevNumtoFloat = parseFloat(previousNumberDisplay.innerText);
         
         switch(this.operator){
             case "+":
-                console.log(this.currentNumtoFloat + this.prevNumtoFloat)
                 currentNumberDisplay.innerText = (this.currentNumtoFloat + this.prevNumtoFloat);
                 break;
             case "-":
-                console.log(this.currentNumtoFloat - this.prevNumtoFloat)
                 currentNumberDisplay.innerText = (this.prevNumtoFloat - this.currentNumtoFloat);
                 break;
             case "*":
-                console.log(this.currentNumtoFloat * this.prevNumtoFloat)
                 currentNumberDisplay.innerText = (this.currentNumtoFloat * this.prevNumtoFloat);
                 break;
             case "/":
-                console.log(this.currentNumtoFloat / this.prevNumtoFloat)
+                if (this.currentNumtoFloat == 0){
+                    alert('NOPE');
+                    return
+                }
                 currentNumberDisplay.innerText = (this.prevNumtoFloat / this.currentNumtoFloat);
                 break;                
                                               

@@ -34,7 +34,7 @@ body{
     justify-content: center;
     flex-flow: column;
     align-items: end;
-    border-radius: 0.5em; 
+    border-radius: 0.5rem; 
     padding-right: 0.5rem;
 }
 
@@ -51,7 +51,9 @@ button{
     border: none;
     font-size: 3rem;
     font-weight: 600;
-    border-radius: 0.5em;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    user-select: none;
 }
 
 button:hover{

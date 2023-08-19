@@ -11,10 +11,26 @@ class Calculator {
     }
 
     appendNumber(buttonText){
-        if (buttonText == ',' && currentNumberDisplay.innerText.includes(',')){
-            return
-        }
+        //Limit amount of digits
+        if (currentNumberDisplay.innerText.length == 18) {return}
+        
+        //Filter problematic input values
+        switch (buttonText){
+            case '.':
+               if (currentNumberDisplay.innerText.includes('.')) { return }
+               break;
+            case '0':
+                if (currentNumberDisplay.innerText == '0') { return }
+                break;
+            default:
+                if (currentNumberDisplay.innerText == '0'){             
+                    this.currentNumberDisplay.innerText = buttonText;
+                    return
+                }
+            }
+
         this.currentNumberDisplay.innerText += buttonText;
+
     }
 
     delete(){
@@ -28,11 +44,20 @@ class Calculator {
 
     inputOperator(operatorText){
         this.operator = operatorText;
+
+        if (currentNumberDisplay.innerText == ""){
+            previousNumberDisplay.innerText = previousNumberDisplay.innerText.slice(0,-2) + " " +operatorText;;
+            return};
+
         previousNumberDisplay.innerText = this.currentNumberDisplay.innerText + " " +operatorText;
         currentNumberDisplay.innerText = "";
     }
 
     operate(){
+        if (currentNumberDisplay.innerText == "" || previousNumberDisplay.innerText == ""){
+            return console.log('missing one')
+        }
+
         this.currentNumtoFloat = parseFloat(currentNumberDisplay.innerText);
         this.prevNumtoFloat = parseFloat(previousNumberDisplay.innerText);
         

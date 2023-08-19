@@ -2,6 +2,7 @@
 *::after,
 *::before{
     box-sizing: border-box;
+    font-family: 'Handjet', cursive;     
 }
 
 body{
@@ -11,25 +12,30 @@ body{
 }
 
 .calculator{
-    background-color: antiquewhite;
+    background: rgb(0, 0, 0);
     height: 100vh;
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-template-rows: 150px repeat(5,100px);
     justify-content: center;
     align-content: center;
+    grid-gap: 10px;
 
 }
 
 .display{
+    font-family: 'Handjet', cursive;    
     background-color: black;
+    border: 1px solid white;
     color: white;
-    font-size: 2.5rem;
+    font-size: 4rem;
     grid-column: span 4;
     display: flex;
     justify-content: center;
     flex-flow: column;
     align-items: end;
+    border-radius: 0.5em; 
+    padding-right: 0.5rem;
 }
 
 .previousNumber, .currentNumber{
@@ -38,4 +44,34 @@ body{
 
 .span-two{
     grid-column: span 2;
+}
+
+button{
+    background-color: rgb(192, 192, 192);
+    border: none;
+    font-size: 3rem;
+    font-weight: 600;
+    border-radius: 0.5em;
+}
+
+button:hover{
+    background-color: rgb(235, 235, 235);
+
+}
+
+button:active{
+    background-color: rgb(255, 255, 255);
+    width: 90%;
+    height: 90%;    
+    justify-self: center;
+    align-self: center;
+}
+
+.red-button{
+    background-color: rgb(151, 0, 0);
+    color: white;
+}
+
+.red-button:hover{
+    background-color: rgb(187, 0, 0);
 }

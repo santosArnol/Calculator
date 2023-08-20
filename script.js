@@ -48,8 +48,12 @@ class Calculator {
     inputOperator(operatorText){
         this.operator = operatorText;
 
+
         if (currentNumberDisplay.innerText == ""){
-            previousNumberDisplay.innerText = previousNumberDisplay.innerText.slice(0,-2) + " " +operatorText;;
+            if (previousNumberDisplay.innerText == ""){
+                return
+            }
+            previousNumberDisplay.innerText = previousNumberDisplay.innerText.slice(0,-2) + " " +operatorText;
             return};
 
         if (previousNumberDisplay.innerText != ""){
@@ -62,6 +66,10 @@ class Calculator {
     }
 
     operate(){
+
+        if (currentNumberDisplay.innerText == ""){
+            return
+        }
 
         this.currentNumtoFloat = parseFloat(currentNumberDisplay.innerText);
         this.prevNumtoFloat = parseFloat(previousNumberDisplay.innerText);
